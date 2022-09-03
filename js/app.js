@@ -34,7 +34,7 @@ const showCategory = (items) => {
 const categoriesItemsContainer = document.getElementById('categories_items_container');
 categoriesItemsContainer.innerHTML= '';
 items.forEach(item => {
-    console.log(item)
+    // console.log(item)
 
     const {image_url, title,details,_id,total_view} = item;
     const categorisItems = document.createElement('div');
@@ -52,7 +52,7 @@ items.forEach(item => {
      
       </div>
       <h3>View: ${total_view}</h3>
-      <button onclick="showModal('${_id}')" class="btn btn-primary">Details</button>
+      <button onclick="showModal('${_id}')" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#phoneDetailsModal">Details</button>
       </div>
     </div>
   </div>
@@ -69,7 +69,16 @@ const showModal = async(news_id) => {
 }
 
 const displayShowModal = (modal) => {
-    console.log(modal)
+    modal.forEach(item =>{
+        console.log(item)
+        const modalTitle = document.getElementById('phoneDetailsModalLabel');
+
+    const modalPhoneDetails = document.getElementById('phone_modal_details');
+    modalPhoneDetails.innerHTML= `
+        <img src="${item.thumbnail_url}" />
+        <h3>${item.title}</h3>
+    `
+    })
 }
 
 
