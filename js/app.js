@@ -1,8 +1,12 @@
 const loadData = async() => {
+  try{
     const url = `https://openapi.programming-hero.com/api/news/categories`;
     const res = await fetch(url);
     const data = await res.json();
     displayCategory(data.data.news_category)
+  } catch(error){
+    console.log(error)
+  }
 }
 
 const displayCategory = (categories) => {
@@ -26,11 +30,15 @@ const displayCategory = (categories) => {
 }
 
 const loadCategories = async(categoriId) => {
+try{
     toggleSpinner(true);
     const url = `https://openapi.programming-hero.com/api/news/category/${categoriId}`
     const res = await fetch(url);
     const data = await res.json();
     showCategory(data.data)
+}catch(error){
+    console.log(error)
+}
 }
 const showCategory = (items) => {
     // found start
@@ -42,7 +50,7 @@ const showCategory = (items) => {
 const categoriesItemsContainer = document.getElementById('categories_items_container');
 categoriesItemsContainer.innerHTML= '';
 items.forEach(item => {
-    // console.log(item)
+    console.log(item)
 
     const {image_url, title,details,_id,total_view} = item;
     const categorisItems = document.createElement('div');
@@ -59,7 +67,7 @@ items.forEach(item => {
       <p class="ms-2 mt-2">Name: ${item.author.name ? item.author.name : "Not Found"}</p>
      
       </div>
-      <h3>View: ${total_view}</h3>
+      <h3>View: ${total_view ? total_view : 'Not Found'}</h3>
       <button onclick="showModal('${_id}')" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#phoneDetailsModal">Details</button>
       </div>
     </div>
@@ -71,10 +79,14 @@ items.forEach(item => {
 }
 
 const showModal = async(news_id) => {
+try{
     const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
     const res = await fetch(url);
     const data = await res.json();
     displayShowModal(data.data)
+}catch(error){
+    console.log(error)
+}
 }
 
 const displayShowModal = (modal) => {
