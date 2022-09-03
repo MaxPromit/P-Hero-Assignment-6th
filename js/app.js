@@ -31,10 +31,12 @@ const loadCategories = async(categoriId) => {
 }
 const showCategory = (items) => {
 // console.log(items);
+const categoriesItemsContainer = document.getElementById('categories_items_container');
+categoriesItemsContainer.innerHTML= '';
 items.forEach(item => {
     console.log(item)
-    const categoriesItemsContainer = document.getElementById('categories_items_container');
-    const {image_url, title,details,thumbnail_url} = item;
+
+    const {image_url, title,details,_id,total_view} = item;
     const categorisItems = document.createElement('div');
     categorisItems.classList.add('col');
     categorisItems.innerHTML=`
@@ -42,10 +44,15 @@ items.forEach(item => {
     <img src="${image_url}" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">${title}</h5>
-      <p>${details}</p>
+      <p>${details.length > 500 ? details.slice(0, 500) + '...' : details  }</p>
       <div id="details_btn">
+      <div class="d-flex" id="author_img_div">
       <img id="author_image" src="${item.author.img}" />
-      <button class="btn btn-primary">Details</button>
+      <p class="ms-2 mt-2">Name: ${item.author.name ? item.author.name : "Not Found"}</p>
+     
+      </div>
+      <h3>View: ${total_view}</h3>
+      <button onclick="showModal('${_id}')" class="btn btn-primary">Details</button>
       </div>
     </div>
   </div>
@@ -53,5 +60,17 @@ items.forEach(item => {
     categoriesItemsContainer.appendChild(categorisItems)
 })
 }
+
+const showModal = async(news_id) => {
+    const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    displayShowModal(data.data)
+}
+
+const displayShowModal = (modal) => {
+    console.log(modal)
+}
+
 
 loadData();
