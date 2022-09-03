@@ -19,7 +19,7 @@ const displayCategory = (categories) => {
         const {category_name, category_id} = category;
         const categoryContainer = document.getElementById('category_container');
         const li = document.createElement('li');
-        li.classList.add('category_li')
+        li.classList.add('category_li',)
    
         li.innerHTML=`
         <li onclick="loadCategories('${category_id}')">${category_name}</li>

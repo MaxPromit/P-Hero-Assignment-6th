@@ -24,17 +24,14 @@
     background-color: antiquewhite;
     color: black;
 }
-#container_flex{
-   background-color: blue;
-}
 
 
-@media screen and (max-width: 480px) {
+/* @media screen and (max-width: 480px) {
     body {
       background-color: lightgreen;
     }
     ul#category_container {
         display: grid;
         grid-template-columns: repeat(3,1fr); 
-    }
-  }
+    };
+  } */
