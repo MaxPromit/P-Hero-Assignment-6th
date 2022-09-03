@@ -24,13 +24,17 @@
     background-color: antiquewhite;
     color: black;
 }
+#container_flex{
+   background-color: blue;
+}
+
+
 @media screen and (max-width: 480px) {
     body {
       background-color: lightgreen;
     }
-    #ul_container{
-        grid-template-columns: repeat(2, 1fr);
-
-        grid-template-rows: repeat(2,1fr);
+    ul#category_container {
+        display: grid;
+        grid-template-columns: repeat(3,1fr); 
     }
   }

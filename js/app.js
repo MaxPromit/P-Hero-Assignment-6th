@@ -41,18 +41,27 @@ try{
 }
 }
 const showCategory = (items) => {
+    // console.log(items)
     // found start
     const foundSpan = document.getElementById('found_span');
     const foundSpanString = foundSpan.innerText;
     foundSpan.innerText = items.length;
     // found end
 
-const categoriesItemsContainer = document.getElementById('categories_items_container');
-categoriesItemsContainer.innerHTML= '';
-items.forEach(item => {
-    console.log(item)
+    const categoriesItemsContainer = document.getElementById('categories_items_container');
+    categoriesItemsContainer.innerHTML= '';
+
+    const product = items.sort((a,b)=> {
+       return b.total_view - a.total_view
+    });
+    console.log(product)
+
+    product.forEach(item => {
+    // console.log(item)
 
     const {image_url, title,details,_id,total_view} = item;
+
+    // console.log(item)
     const categorisItems = document.createElement('div');
     categorisItems.classList.add('col');
     categorisItems.innerHTML=`
