@@ -10,11 +10,11 @@ const loadData = async() => {
 }
 
 const displayCategory = (categories) => {
-    // console.log(categories)
+
     
     
     categories.forEach(category => {
-        // console.log(category)
+
        
         const {category_name, category_id} = category;
         const categoryContainer = document.getElementById('category_container');
@@ -41,7 +41,7 @@ try{
 }
 }
 const showCategory = (items) => {
-    // console.log(items)
+
     // found start
     const foundSpan = document.getElementById('found_span');
     const foundSpanString = foundSpan.innerText;
@@ -57,11 +57,11 @@ const showCategory = (items) => {
     console.log(product)
 
     product.forEach(item => {
-    // console.log(item)
+
 
     const {image_url, title,details,_id,total_view} = item;
 
-    // console.log(item)
+  
     const categorisItems = document.createElement('div');
     categorisItems.classList.add('col');
     categorisItems.innerHTML=`
@@ -72,7 +72,7 @@ const showCategory = (items) => {
       <p>${details.length > 500 ? details.slice(0, 500) + '...' : details  }</p>
       <div id="details_btn">
       <div class="d-flex" id="author_img_div">
-      <img id="author_image" src="${item.author.img}" />
+      <img id="author_image" src="${item.author.img ? item.author.img : "Not Found"}" />
       <p class="ms-2 mt-2">Name: ${item.author.name ? item.author.name : "Not Found"}</p>
      
       </div>
@@ -100,14 +100,20 @@ try{
 
 const displayShowModal = (modal) => {
     modal.forEach(item =>{
-        console.log(item)
+
         const modalTitle = document.getElementById('phoneDetailsModalLabel');
 
     const modalPhoneDetails = document.getElementById('phone_modal_details');
     modalPhoneDetails.innerHTML= `
-        <img src="${item.thumbnail_url}" />
+        <img src="${item.thumbnail_url ? item.thumbnail_url : "Not Found"}" />
         <h3>${item.title}</h3>
+        <div class="d-flex" id="author_img_div">
+        <img id="author_image" src="${item.author.img ? item.author.img : "Not Found"}" />
+        <p class="ms-2 mt-2">Name: ${item.author.name ? item.author.name : "Not Found"}</p>
+       
+        </div>
     `
+
     })
 }
 // spinner
