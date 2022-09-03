@@ -9,3 +9,11 @@
     transition: .3s;
     cursor: pointer;
 }
+#details_btn{
+    display: flex;
+    justify-content: space-between;
+}
+#author_image{
+    width: 50px;
+    border-radius: 50%;
+}

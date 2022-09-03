@@ -42,7 +42,11 @@ items.forEach(item => {
     <img src="${image_url}" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">${title}</h5>
-      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p>${details}</p>
+      <div id="details_btn">
+      <img id="author_image" src="${item.author.img}" />
+      <button class="btn btn-primary">Details</button>
+      </div>
     </div>
   </div>
     `
