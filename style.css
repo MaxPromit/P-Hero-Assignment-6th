@@ -1,0 +1,11 @@
+
+.category_li{
+    margin-left: 50px;
+
+}
+
+.category_li:hover{
+    color: salmon;
+    transition: .3s;
+    cursor: pointer;
+}
