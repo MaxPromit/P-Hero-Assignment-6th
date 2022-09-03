@@ -33,7 +33,12 @@ const loadCategories = async(categoriId) => {
     showCategory(data.data)
 }
 const showCategory = (items) => {
-// console.log(items);
+    // found start
+    const foundSpan = document.getElementById('found_span');
+    const foundSpanString = foundSpan.innerText;
+    foundSpan.innerText = items.length;
+    // found end
+
 const categoriesItemsContainer = document.getElementById('categories_items_container');
 categoriesItemsContainer.innerHTML= '';
 items.forEach(item => {

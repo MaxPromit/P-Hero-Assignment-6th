@@ -20,6 +20,10 @@
 #author_img_div{
     width: 300px;
 }
+#found_container{
+    background-color: antiquewhite;
+    color: black;
+}
 @media screen and (max-width: 480px) {
     body {
       background-color: lightgreen;
