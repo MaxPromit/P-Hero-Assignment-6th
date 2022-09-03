@@ -7,9 +7,11 @@ const loadData = async() => {
 
 const displayCategory = (categories) => {
     // console.log(categories)
-
+    
+    
     categories.forEach(category => {
         // console.log(category)
+       
         const {category_name, category_id} = category;
         const categoryContainer = document.getElementById('category_container');
         const li = document.createElement('li');
@@ -18,12 +20,13 @@ const displayCategory = (categories) => {
         li.innerHTML=`
         <li onclick="loadCategories('${category_id}')">${category_name}</li>
         `
+        
         categoryContainer.appendChild(li)
     })
 }
 
 const loadCategories = async(categoriId) => {
-
+    toggleSpinner(true);
     const url = `https://openapi.programming-hero.com/api/news/category/${categoriId}`
     const res = await fetch(url);
     const data = await res.json();
@@ -57,7 +60,8 @@ items.forEach(item => {
     </div>
   </div>
     `
-    categoriesItemsContainer.appendChild(categorisItems)
+    categoriesItemsContainer.appendChild(categorisItems);
+    toggleSpinner(false);
 })
 }
 
@@ -80,6 +84,16 @@ const displayShowModal = (modal) => {
     `
     })
 }
-
+// spinner
+const toggleSpinner = (isSpinning) =>{
+    const spinner = document.getElementById('loader');
+    if(isSpinning){
+        spinner.classList.remove('d-none')
+    }
+    else{
+        spinner.classList.add('d-none')
+    }
+    }
+    
 
 loadData();
